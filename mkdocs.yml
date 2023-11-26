@@ -1,7 +1,7 @@
 site_name: ralfweinbrecher.de
 
 theme:
-    name: 'bootstrap'
+    name: 'simple-blog'
     palette:
 
     # Light mode
