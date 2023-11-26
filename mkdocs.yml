@@ -1,7 +1,7 @@
 site_name: ralfweinbrecher.de
 
 theme:
-    name: 'terminal'
+    name: 'material'
     palette:
 
     # Light mode
