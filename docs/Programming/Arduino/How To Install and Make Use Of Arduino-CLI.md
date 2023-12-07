@@ -1,3 +1,11 @@
+---
+title: How To Install and Make Use Of Arduino-CLI
+tags:
+  - arduino
+date: 07.12.2023
+---
+# How To Install and Make Use Of Arduino-CLI
+
 [Arduino CLI](https://arduino.github.io/arduino-cli/0.35/) is an All-in-One solution for managing libraries and boards, building and uploading sketches and many other tools. It can be used for all boards and platforms compatible with Arduino. It enables you to control them via the command line.
 
 Arduino CLI is not only a stand-alone tool, but also the heart of all official Arduino development software (Arduino IDE, Arduino Web Editor). 
