@@ -1,0 +1,607 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../..">
+      
+      
+        <link rel="next" href="../../Docker/How%20to%20remove%20all%20Docker%20images%20at%20once/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+    
+    
+      
+        <title>How To Install and Make Use Of Arduino-CLI - ralfweinbrecher.de</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-install-and-make-use-of-arduino-cli" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ralfweinbrecher.de" class="md-header__button md-logo" aria-label="ralfweinbrecher.de" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ralfweinbrecher.de
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How To Install and Make Use Of Arduino-CLI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ralfweinbrecher.de" class="md-nav__button md-logo" aria-label="ralfweinbrecher.de" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    ralfweinbrecher.de
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    How To Install and Make Use Of Arduino-CLI
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/How%20to%20remove%20all%20Docker%20images%20at%20once/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to remove all Docker images at once
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="how-to-install-and-make-use-of-arduino-cli">How To Install and Make Use Of Arduino-CLI<a class="headerlink" href="#how-to-install-and-make-use-of-arduino-cli" title="Permanent link">&para;</a></h1>
+<p><a href="https://arduino.github.io/arduino-cli/0.35/">Arduino CLI</a> is an All-in-One solution for managing libraries and boards, building and uploading sketches and many other tools. It can be used for all boards and platforms compatible with Arduino. It enables you to control them via the command line.</p>
+<p>Arduino CLI is not only a stand-alone tool, but also the heart of all official Arduino development software (Arduino IDE, Arduino Web Editor). </p>
+<h1 id="installation-of-the-arduino-cli-on-macos">Installation of the Arduino-CLI on macOS<a class="headerlink" href="#installation-of-the-arduino-cli-on-macos" title="Permanent link">&para;</a></h1>
+<p>On macOS it‘s most convenient to make use of <a href="https://brew.sh">HomeBrew</a> to install the Arduino-CLI:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>update
+brew<span class="w"> </span>install<span class="w"> </span>arduino-cli
+</code></pre></div>
+<h2 id="validating-the-installation">Validating the installation<a class="headerlink" href="#validating-the-installation" title="Permanent link">&para;</a></h2>
+<p>To check the installation you can let <code>arduino-cli</code> print its version number in the terminal:</p>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>version<span class="w">                                                              </span>arduino-cli<span class="w">  </span>Version:<span class="w"> </span><span class="m">0</span>.34.2<span class="w"> </span>Commit:<span class="w"> </span>963c1a76<span class="w"> </span>Datum:<span class="w"> </span><span class="m">2023</span>-09-11T09:50:44Z
+arduino-cli<span class="w"> </span><span class="nb">help</span><span class="w"> </span>core<span class="w">                                                            </span>
+
+Arduino-Kern-Operationen.
+Usage:
+<span class="w">  </span>arduino-cli<span class="w"> </span>core<span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
+
+Beispiele:
+<span class="w">  </span>arduino-cli<span class="w"> </span>core<span class="w"> </span>update-index
+
+...
+</code></pre></div>
+<p>The Arduino CLI consists of a single executable file. By default, the Arduino CLI uses three directories for its functionalities.</p>
+<p><strong>data</strong> - for storing all configurations and platform files
+<strong>downloads</strong> - for downloading installation packages, libraries, etc.
+<strong>user</strong> - where the libraries and sketches are stored</p>
+<p>The paths to these directories are determined by:</p>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>config<span class="w"> </span>dump<span class="w">                                                          </span>board_manager:
+<span class="w">  </span>additional_urls:<span class="w"> </span><span class="o">[]</span>
+build_cache:
+<span class="w">  </span>compilations_before_purge:<span class="w"> </span><span class="m">10</span>
+<span class="w">  </span>ttl:<span class="w"> </span>720h0m0s
+daemon:
+<span class="w">  </span>port:<span class="w"> </span><span class="s2">&quot;50051&quot;</span>
+directories:
+<span class="w">  </span>data:<span class="w"> </span>/Users/&lt;user&gt;/Library/Arduino15
+<span class="w">  </span>downloads:<span class="w"> </span>/Users/&lt;user&gt;/Library/Arduino15/staging
+<span class="w">  </span>user:<span class="w"> </span>/Users/&lt;user&gt;/Documents/Arduino
+library:
+<span class="w">  </span>enable_unsafe_install:<span class="w"> </span><span class="nb">false</span>
+logging:
+<span class="w">  </span>file:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span>format:<span class="w"> </span>text
+<span class="w">  </span>level:<span class="w"> </span>info
+metrics:
+<span class="w">  </span>addr:<span class="w"> </span>:9090
+<span class="w">  </span>enabled:<span class="w"> </span><span class="nb">true</span>
+output:
+<span class="w">  </span>no_color:<span class="w"> </span><span class="nb">false</span>
+sketch:
+<span class="w">  </span>always_export_binaries:<span class="w"> </span><span class="nb">false</span>
+updater:
+<span class="w">  </span>enable_notification:<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>The data folder is the same as the <a href="https://www.arduino.cc/en/software">Arduino IDE</a> folder where all your platforms and configurations are stored. This <strong>path should not be changed</strong>. The download directory can also be retained. However, the user directory may need to be changed if you want to use already installed libraries and created sketches. To do this, a configuration file must be created specifically for the Arduino CLI. This can be done with the following command:</p>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>config<span class="w"> </span>init
+</code></pre></div>
+<p>This simply creates a new YAML file in the data directory. This file has the same content as when you execute the <code>config dump</code> command. You can then open the file in a text editor and change the user directory to the existing sketches directory and save it. </p>
+<p>In my case this folder is set tof:  <code>~/Development/personal/arduino/Sketches</code>. </p>
+<p>To test whether the configuration works, simply try to list the installed libraries with the following command:</p>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>lib<span class="w"> </span>list<span class="w">                                                             </span>Name<span class="w">                   </span>Installiert<span class="w">   </span>Verfügbar<span class="w"> </span>Ort<span class="w">                </span>Beschreibung<span class="w">   </span>
+Arduino_TensorFlowLite<span class="w"> </span><span class="m">2</span>.4.0-ALPHA<span class="w">   </span>-<span class="w">         </span>LIBRARY_LOCATION_USER<span class="w">   </span>-<span class="w">         </span>
+ezTime<span class="w">                 </span><span class="m">0</span>.8.3<span class="w">         </span>-<span class="w">         </span>LIBRARY_LOCATION_USER.<span class="w">  </span>-<span class="w">         </span>
+M5ez<span class="w">                   </span><span class="m">2</span>.3.0<span class="w">         </span>-<span class="w">         </span>LIBRARY_LOCATION_USER<span class="w">   </span>-<span class="w">       </span>
+M5Stack<span class="w">                </span><span class="m">0</span>.4.6<span class="w">         </span>-<span class="w">         </span>LIBRARY_LOCATION_USER.<span class="w">  </span>-
+</code></pre></div>
+<h2 id="building-a-sketch">Building a sketch<a class="headerlink" href="#building-a-sketch" title="Permanent link">&para;</a></h2>
+<p>The target board must be known in order to translate a sketch. The <strong>Fully Qualified Board Name (FQBN)</strong> is decisive. The following command is used to determine the FQBN of a board connected via USB:</p>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>board<span class="w"> </span>list<span class="w">                                                           </span>Port<span class="w">                            </span>Protokoll<span class="w"> </span>Typ<span class="w">               </span>Platinenname<span class="w">        </span>FQBN<span class="w">                        </span>Kern<span class="w">             </span>
+/dev/cu.Bluetooth-Incoming-Port<span class="w"> </span>serial<span class="w">    </span>Serial<span class="w"> </span>Port<span class="w">       </span>Unbekannt<span class="w">           </span>
+/dev/cu.usbmodem2101<span class="w">            </span>serial<span class="w">    </span>Serial<span class="w"> </span>Port<span class="w"> </span><span class="o">(</span>USB<span class="o">)</span><span class="w"> </span>Arduino<span class="w"> </span>Nano<span class="w"> </span><span class="m">33</span><span class="w"> </span>BLE<span class="w"> </span>arduino:mbed:nano33ble<span class="w">      </span>arduino:mbed<span class="w">     </span>
+<span class="w">                                          </span>Serial<span class="w"> </span>Port<span class="w"> </span><span class="o">(</span>USB<span class="o">)</span><span class="w"> </span>Arduino<span class="w"> </span>Nano<span class="w"> </span><span class="m">33</span><span class="w"> </span>BLE<span class="w"> </span>arduino:mbed_nano:nano33ble<span class="w"> </span>arduino:mbed_nano
+</code></pre></div>
+<p>In this example an <strong>Arduino Nano 33 BLE</strong> is connected via USB.
+The <code>compile</code> command gets called from the parent directory using the specification of:</p>
+<ul>
+<li>FQBN of the target board</li>
+<li>Name of the sketch</li>
+</ul>
+<div class="highlight"><pre><span></span><code>arduino-cli<span class="w"> </span>compile<span class="w"> </span>--fqbn<span class="w"> </span>arduino:mbed:nano33ble<span class="w"> </span>Blink<span class="w">                         </span>
+
+Der<span class="w"> </span>Sketch<span class="w"> </span>verwendet<span class="w"> </span><span class="m">84280</span><span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span><span class="m">8</span>%<span class="o">)</span><span class="w"> </span>des<span class="w"> </span>Programmspeicherplatzes.<span class="w"> </span>Das<span class="w"> </span>Maximum<span class="w"> </span>sind<span class="w"> </span><span class="m">983040</span><span class="w"> </span>Bytes.
+
+Globale<span class="w"> </span>Variablen<span class="w"> </span>verwenden<span class="w"> </span><span class="m">43968</span><span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span><span class="m">16</span>%<span class="o">)</span><span class="w"> </span>des<span class="w"> </span>dynamischen<span class="w"> </span>Speichers,<span class="w"> </span><span class="m">218176</span><span class="w"> </span>Bytes<span class="w"> </span>für<span class="w"> </span>lokale<span class="w"> </span>Variablen<span class="w"> </span>verbleiben.<span class="w"> </span>Das<span class="w"> </span>Maximum<span class="w"> </span>sind<span class="w"> </span><span class="m">262144</span><span class="w"> </span>Bytes.
+
+Used<span class="w"> </span>platform<span class="w"> </span>Version<span class="w"> </span>Pfad<span class="w">                                                      </span>
+arduino:mbed<span class="w">  </span><span class="m">3</span>.3.0<span class="w">   </span>/Users/&lt;user&gt;/Library/Arduino15/packages/arduino/hardware/mbed/3.3.0
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
